@@ -1,0 +1,23 @@
+{
+  "coord": { "lon": 72.83, "lat": 21.17 },
+  "weather": [
+    { "id": 801, "main": "Clouds", "description": "few clouds", "icon": "02d" }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 31.5,
+    "feels_like": 33.2,
+    "temp_min": 30.0,
+    "temp_max": 32.5,
+    "pressure": 1009,
+    "humidity": 60
+  },
+  "visibility": 6000,
+  "wind": { "speed": 3.4, "deg": 250 },
+  "clouds": { "all": 20 },
+  "dt": 1708359000,
+  "sys": { "country": "IN" },
+  "timezone": 19800,
+  "name": "Surat",
+  "cod": 200
+}

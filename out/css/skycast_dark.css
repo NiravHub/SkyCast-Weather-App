@@ -1,0 +1,322 @@
+/* skycast_dark.css
+   Dark theme for SkyCast - improved suggestion menu, strong contrast,
+   Remove button matches Add, and dark Today Overview for readability.
+*/
+
+.root {
+    -fx-text-base-color: #eaf3ff;
+    -fx-bg: #071027;
+}
+.root { -fx-background-color: -fx-bg; }
+
+/* top bar title gradient */
+.app-title {
+    -fx-fill: linear-gradient(#a6d3ff, #60a5fa);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 2);
+}
+
+/* current card */
+.current-card {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    -fx-border-color: rgba(255,255,255,0.02);
+    -fx-padding: 22;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0.0, 0, 6);
+}
+.current-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(96,165,250,0.12), 20, 0.0, 0, 14);
+}
+
+/* big temperature styling */
+.temp-xlarge {
+    -fx-font-size: 56px;
+    -fx-font-weight: 800;
+    -fx-text-fill: rgba(255,255,255,0.95);
+    -fx-effect: dropshadow(gaussian, rgba(96,165,250,0.18), 26, 0, 0, 6);
+    -fx-padding: 2 0 8 0;
+}
+
+/* muted text */
+.muted { -fx-opacity: 0.95; -fx-text-fill: rgba(234,243,255,0.78); }
+.small-muted { -fx-font-size: 12px; -fx-opacity: 0.85; -fx-text-fill: rgba(234,243,255,0.66); }
+
+/* primary buttons */
+.primary-button {
+    -fx-background-color: linear-gradient(to bottom, #1f6fe6, #0b84ff);
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-padding: 8 14;
+    -fx-font-weight: 700;
+}
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #2a81ff, #0c6fe6);
+}
+
+/* snapshot/share */
+.snapshot-button { -fx-background-color: linear-gradient(to bottom, #13b58a, #0f8f63); -fx-text-fill: white; -fx-background-radius:8; }
+.share-button { -fx-background-color: linear-gradient(to bottom, #9b5cff, #6b2de6); -fx-text-fill: white; -fx-background-radius:8; }
+
+/* toggle selected */
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(to bottom, #32d38f, #10b981);
+    -fx-text-fill: black;
+}
+
+/* list view / favorites */
+.left .list-view {
+    -fx-background-color: rgba(255,255,255,0.01);
+    -fx-border-color: rgba(255,255,255,0.02);
+    -fx-padding: 6;
+}
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 10 12;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+    -fx-text-fill: rgba(234,243,255,0.78);
+}
+.list-view .list-cell:hover {
+    -fx-background-color: linear-gradient(to right, rgba(11,132,255,0.10), rgba(96,165,250,0.04));
+    -fx-effect: dropshadow(gaussian, rgba(11,132,255,0.06), 8,0,0,6);
+    -fx-text-fill: white;
+}
+.list-view .list-cell:selected {
+    -fx-background-color: linear-gradient(to right, rgba(11,132,255,0.14), rgba(6,84,180,0.08));
+    -fx-text-fill: white;
+}
+
+/* small buttons (Add / Remove) - base */
+.small-button {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    -fx-text-fill: rgba(234,243,255,0.92);
+    -fx-padding: 8 14;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: rgba(255,255,255,0.04);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 6, 0, 0, 3);
+    -fx-cursor: hand;
+}
+.small-button:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(11,132,255,0.12), rgba(96,165,250,0.04));
+    -fx-text-fill: white;
+}
+
+/* destructive / remove: visually match Add exactly (improves consistency) */
+.small-button.destructive,
+.small-button.desctructive {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    -fx-text-fill: rgba(234,243,255,0.92);
+    -fx-border-color: rgba(255,255,255,0.04);
+    -fx-border-width: 1;
+    -fx-background-radius: 10;
+    -fx-padding: 8 14;
+    -fx-font-size: 13px;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 6, 0, 0, 3);
+}
+
+/* destructive hover reuses same accent hover */
+.small-button.destructive:hover, .small-button.desctructive:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(11,132,255,0.14), rgba(96,165,250,0.06));
+    -fx-text-fill: white;
+}
+
+/* disabled small button */
+.small-button:disabled,
+.small-button.destructive:disabled,
+.small-button.desctructive:disabled {
+    -fx-opacity: 0.65;
+    -fx-text-fill: rgba(234,243,255,0.78);
+    -fx-effect: none;
+    -fx-cursor: default;
+}
+
+/* icon / theme toggle */
+.icon-button {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    -fx-background-radius: 16;
+    -fx-pref-width: 36;
+    -fx-pref-height: 36;
+    -fx-font-size: 16px;
+    -fx-text-fill: rgba(234,243,255,0.95);
+    -fx-border-color: rgba(255,255,255,0.03);
+}
+.icon-button:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(96,165,250,0.12), rgba(96,165,250,0.06));
+}
+
+/* forecast card */
+.forecast-card {
+    -fx-padding: 12;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-min-width: 160;
+    -fx-min-height: 110;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.55), 8, 0.0, 0, 6);
+    -fx-cursor: hand;
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    -fx-border-color: rgba(255,255,255,0.02);
+    -fx-border-width: 1;
+}
+.card-day { -fx-font-weight: 700; -fx-font-size: 13px; -fx-text-fill: rgba(234,243,255,0.92); }
+.card-temps { -fx-font-size: 13px; -fx-opacity: 0.95; -fx-padding: 6 0 0 0; -fx-text-fill: rgba(234,243,255,0.86); }
+.card-cond { -fx-font-size: 12px; -fx-opacity: 0.85; -fx-text-fill: rgba(234,243,255,0.72); }
+
+.forecast-card:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(235,250,255,0.06), rgba(225,245,255,0.03));
+    -fx-effect: dropshadow(three-pass-box, rgba(96,165,250,0.16), 22, 0.0, 0, 14);
+    -fx-translate-y: -4;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* charts */
+.chart .axis { -fx-tick-label-fill: rgba(234,243,255,0.88); -fx-font-size: 11px; }
+.chart .chart-vertical-grid-lines,
+.chart .chart-horizontal-grid-lines { -fx-stroke: rgba(234,243,255,0.06); -fx-stroke-dash-array: 2 6; }
+.chart .chart-plot-background { -fx-background-color: transparent; }
+
+/* Today overview box: dark background + bright readable text */
+.overview-box, .text-area.overview-box {
+    -fx-control-inner-background: #071027;          /* main dark inner background */
+    -fx-background-color: linear-gradient(#071027, #0a1530); /* subtle depth */
+    -fx-border-color: rgba(255,255,255,0.06);
+    -fx-text-fill: rgba(234,243,255,0.96);
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.35), 6, 0, 0, 3);
+    -fx-highlight-fill: rgba(96,165,250,0.18);
+    -fx-highlight-text-fill: white;
+}
+
+/* prompt/placeholder text inside textarea */
+.overview-box .prompt-text {
+    -fx-fill: rgba(234,243,255,0.45);
+}
+
+/* section headings */
+.section-title { -fx-text-fill: rgba(234,243,255,0.88); -fx-font-weight: 700; -fx-font-size: 15px; }
+.section-subtitle { -fx-text-fill: rgba(234,243,255,0.78); -fx-font-weight: 600; }
+
+/* forecast FlowPane container */
+#forecastPane {
+    -fx-background-color: rgba(255,255,255,0.02);
+    -fx-padding: 8;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+/* scrollbars */
+.scroll-bar *.thumb { -fx-background-color: rgba(96,165,250,0.22); }
+.scroll-bar *.track { -fx-background-color: rgba(255,255,255,0.02); }
+
+/* hourly series classes */
+.chart-series-line.series-hourly-min { -fx-stroke: rgba(96,165,250,0.98); -fx-stroke-width: 2.6; }
+.chart-symbol.series-hourly-min { -fx-background-color: rgba(96,165,250,1.0), white; }
+.chart-series-line.series-hourly-max { -fx-stroke: rgba(255,165,77,0.95); -fx-stroke-width: 2.6; }
+.chart-symbol.series-hourly-max { -fx-background-color: rgba(255,165,77,1.0), white; }
+
+/* tooltip */
+.tooltip {
+    -fx-background-color: rgba(8,10,16,0.95);
+    -fx-text-fill: white;
+    -fx-padding: 6;
+}
+
+/* combo-box / editor */
+.combo-box, .combo-box .editor, .text-field {
+    -fx-background-color: rgba(255,255,255,0.02);
+    -fx-text-fill: rgba(234,243,255,0.96);
+    -fx-border-color: rgba(255,255,255,0.04);
+}
+
+/* ---------- Suggestion ContextMenu (dark, high contrast) ---------- */
+/* provide a dark popup that matches the app theme */
+.context-menu {
+    -fx-background-color: linear-gradient(to bottom, rgba(6,12,24,0.98), rgba(8,16,32,0.98));
+    -fx-border-color: rgba(96,165,250,0.10);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.55), 10, 0, 0, 6);
+    -fx-padding: 6;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* label inside ContextMenu: use two classes for primary & secondary */
+.context-menu .suggestion-primary,
+.context-menu .label.suggestion-primary {
+    -fx-text-fill: rgba(232,246,255,0.96);
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 8 12 2 12;
+}
+.context-menu .suggestion-secondary,
+.context-menu .label.suggestion-secondary {
+    -fx-text-fill: rgba(232,246,255,0.62);
+    -fx-font-size: 11px;
+    -fx-padding: 0 12 8 12;
+}
+
+/* highlight selected item using theme accent */
+.context-menu .menu-item:selected .suggestion-primary,
+.context-menu .custom-menu-item:selected .suggestion-primary,
+.context-menu .menu-item:hover .suggestion-primary,
+.context-menu .custom-menu-item:hover .suggestion-primary {
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+}
+
+/* hovered background for the whole menu item */
+.context-menu .menu-item:hover,
+.context-menu .custom-menu-item:hover,
+.context-menu .menu-item:focused,
+.context-menu .custom-menu-item:focused {
+    -fx-background-color: linear-gradient(to right, rgba(96,165,250,0.16), rgba(96,165,250,0.06));
+    -fx-background-radius: 8;
+}
+
+/* ensure items don't get default menu padding */
+.context-menu .menu-item, .context-menu .custom-menu-item {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+/* make suggestion labels take reasonable width */
+.context-menu .label {
+    -fx-min-width: 300;
+    -fx-wrap-text: true;
+}
+
+/* scrollbar inside context menu */
+.context-menu .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+.context-menu .scroll-bar .thumb {
+    -fx-background-color: rgba(96,165,250,0.18);
+}
+
+/* ensure disabled buttons still visible but dim */
+.button:disabled {
+    -fx-opacity: 0.55;
+    -fx-text-fill: rgba(255,255,255,0.85);
+}
+
+/* Dark mode interval label (Interval (s)) */
+.interval-label {
+    -fx-text-fill: #b7cff7;   /* readable ice-blue on dark background */
+    -fx-font-weight: 600;
+}
+
+/* spinner text color for dark mode */
+.spinner .text-field {
+    -fx-text-fill: #e6f1ff;   /* bright enough to see */
+    -fx-prompt-text-fill: #94aacc;
+}
+
+

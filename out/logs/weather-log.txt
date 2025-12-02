@@ -1,0 +1,9 @@
+[2025-01-14 10:12:45] Provider=ApiWeatherProvider (live mode)
+[2025-01-14 10:12:45] SEARCH_CURRENT: Surat | 31.5 | Clouds | source=api
+[2025-01-14 10:12:46] SEARCH_FORECAST: Surat | days=5 | source=api
+[2025-01-14 10:12:46] Writing cache: surat.json
+[2025-01-14 10:12:46] Writing cache: surat_forecast.json
+[2025-01-14 10:20:02] SEARCH_CURRENT: Mumbai | 30.8 | Clear | source=api
+[2025-01-14 10:20:03] SEARCH_FORECAST: Mumbai | days=5 | source=api
+[2025-01-14 10:32:11] API current fetch error for Delhi: Invalid API key
+[2025-01-14 10:32:11] FALLBACK: used cached current for Delhi

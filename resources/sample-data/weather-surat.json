@@ -1,0 +1,14 @@
+{
+  "current": {
+    "temperature": 32,
+    "feelsLike": 35,
+    "humidity": 70,
+    "condition": "Cloudy",
+    "windSpeed": 11
+  },
+  "forecast": [
+    { "day": "Monday", "minTemp": 27, "maxTemp": 33, "condition": "Cloudy" },
+    { "day": "Tuesday", "minTemp": 28, "maxTemp": 34, "condition": "Sunny" },
+    { "day": "Wednesday", "minTemp": 27, "maxTemp": 32, "condition": "Rainy" }
+  ]
+}

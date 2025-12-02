@@ -1,0 +1,175 @@
+/* skycast_light.css
+   Light theme tokens & overrides
+*/
+
+.root {
+    -fx-text-base-color: #123047;        /* main text */
+    -fx-bg: #f6f8fb;                    /* page background */
+    -fx-panel-bg: #ffffff;              /* card bg */
+    -fx-subtle: #8897a6;                /* secondary text */
+    -fx-accent: #0b84ff;
+}
+
+/* window background */
+.root {
+    -fx-background-color: -fx-bg;
+}
+
+/* Make the center-bg a soft gradient band */
+.center-bg {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0), rgba(9,132,192,0.04));
+}
+
+/* App title (light theme accent) */
+.app-title {
+    -fx-fill: linear-gradient(#0b84ff, #0b5fd6);
+}
+
+/* Current card darken text for readability on white */
+.current-card {
+    -fx-background-color: -fx-panel-bg;
+    -fx-border-color: rgba(10,20,30,0.02);
+}
+
+/* text color overrides */
+.label, .text, .muted, .small-muted {
+    -fx-text-fill: -fx-text-base-color;
+}
+
+/* Make big temp even clearer */
+.temp-xlarge {
+    -fx-text-fill: -fx-text-base-color;
+    -fx-effect: dropshadow(gaussian, rgba(11,18,30,0.08), 10, 0, 0, 2);
+}
+
+/* forecast card background: white with faint bluish glass */
+.forecast-card {
+    -fx-background-color: linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(250,255,255,0.96));
+    -fx-border-color: rgba(8,32,64,0.03);
+}
+
+/* subtle "mirror" overlay on hover */
+.forecast-card:hover {
+    -fx-background-color: linear-gradient(to bottom, rgba(245,254,255,1.0), rgba(235,249,255,0.96));
+}
+
+/* buttons color tweak for light theme */
+.primary-button {
+    -fx-background-color: linear-gradient(to bottom, #0b84ff, #0565c8);
+}
+.snapshot-button { -fx-background-color: linear-gradient(to bottom, #13b58a, #0f8f63); }
+.share-button { -fx-background-color: linear-gradient(to bottom, #9b5cff, #6b2de6); }
+
+/* List view background card */
+.left .list-view {
+    -fx-background-color: rgba(255,255,255,0.9);
+    -fx-border-color: rgba(15,23,36,0.04);
+}
+
+/* Chart axis / gridline colors (light) */
+.chart .chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart .axis {
+    -fx-tick-label-fill: rgba(18,48,71,0.72);
+}
+.chart .chart-vertical-grid-lines,
+.chart .chart-horizontal-grid-lines {
+    -fx-stroke: rgba(18,48,71,0.08);
+}
+
+/* make chart symbols slightly brighter */
+.chart-symbol {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.04), 6, 0, 0, 2);
+}
+
+/* make textareas/cards more visible */
+.text-area {
+    -fx-background-color: rgba(255,255,255,0.98);
+    -fx-border-color: rgba(10,20,30,0.06);
+    -fx-background-radius: 8;
+}
+
+/* auto-refresh toggle ON style (green) */
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(to bottom, #2fd07e, #10b981);
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+/* small utility: give more contrast to section headings */
+.section-title { -fx-text-fill: rgba(18,48,71,0.9); -fx-font-size: 15px; -fx-font-weight: 700; }
+.section-subtitle { -fx-text-fill: rgba(18,48,71,0.75); -fx-font-weight: 600; }
+
+/* ---------- forecast card hover & base ---------- */
+.forecast-card {
+    -fx-background-color: rgba(255,255,255,0.95);
+    -fx-border-color: rgba(11,132,255,0.06);
+    -fx-border-width: 1;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 6, 0.0, 0, 2);
+    -fx-cursor: hand;
+    -fx-transition: all 0.12s ease;
+}
+
+/* card inner elements */
+.card-day { -fx-font-weight: 700; -fx-font-size: 13px; }
+.card-temps { -fx-font-size: 13px; -fx-opacity: 0.95; -fx-padding: 6 0 0 0; }
+.card-cond { -fx-font-size: 12px; -fx-opacity: 0.85; }
+
+/* Favorites list as mini-cards */
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 8 10;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+}
+.list-view .list-cell:hover {
+    -fx-background-color: rgba(11,132,255,0.06); /* light tint when hovered */
+    -fx-effect: dropshadow(gaussian, rgba(11,132,255,0.08), 10,0,0,4);
+    -fx-cursor: hand;
+}
+.list-view .list-cell:selected {
+    -fx-background-color: rgba(11,132,255,0.12);
+}
+
+/* Snapshot & Share buttons colors (distinct) */
+.snapshot-button {
+    -fx-background-color: linear-gradient(to bottom, #10b981, #0ea06a);
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+}
+.share-button {
+    -fx-background-color: linear-gradient(to bottom, #f59e0b, #d97706);
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+}
+
+/* Chart axis / tick styling: make more visible in both themes */
+.axis {
+    -fx-tick-label-fill: rgba(18,48,71,0.72);
+    -fx-font-size: 11px;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+/* Make chart series nodes more visible on hover */
+.chart-symbol {
+    -fx-scale-x: 1.0;
+    -fx-scale-y: 1.0;
+}
+.chart-symbol:hover {
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+}
+
+/* Additional: forecast flowpane spacing tweak */
+#forecastPane {
+    -fx-padding: 6;
+}

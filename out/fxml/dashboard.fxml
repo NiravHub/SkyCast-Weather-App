@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="oep.skycast.ui.DashboardController"
+            stylesheets="@css/style.css">
+
+    <!-- TOP BAR -->
+    <top>
+        <HBox spacing="12" styleClass="top-bar" style="-fx-padding: 12;">
+            <Text text="SkyCast" styleClass="app-title"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <HBox spacing="8" alignment="CENTER">
+                <TextField fx:id="cityInput" promptText="Enter city"
+                           prefWidth="400" styleClass="search-field"/>
+
+                <Button text="Get Weather" onAction="#handleSearch"
+                        styleClass="primary-button"/>
+
+                <ToggleButton fx:id="autoRefreshToggle"
+                              text="Auto Refresh"
+                              onAction="#handleAutoToggle"
+                              styleClass="toggle-button"/>
+
+                <Label text="Interval (s)" styleClass="muted"/>
+
+                <Spinner fx:id="refreshIntervalSpinner" prefWidth="90"/>
+
+                <ComboBox fx:id="locationsDropdown"
+                          promptText="Recent / Quick pick"
+                          prefWidth="220"/>
+
+                <!-- Theme toggle - fx:id so controller can style/tooltip it -->
+                <Button fx:id="themeToggleBtn" text="🌙" onAction="#toggleTheme" styleClass="icon-button">
+                    <tooltip>
+                        <Tooltip text="Toggle theme"/>
+                    </tooltip>
+                </Button>
+
+                <ProgressIndicator fx:id="loadingSpinner"
+                                   prefWidth="20" prefHeight="20"
+                                   visible="false"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- LEFT FAVORITES -->
+    <left>
+        <VBox spacing="10" style="-fx-padding: 12;">
+            <Label text="Favorites" styleClass="section-title"/>
+            <ListView fx:id="favoritesList" prefWidth="160" prefHeight="420"/>
+
+            <HBox spacing="6">
+                <Button fx:id="addFavBtn" text="Add"
+                        onAction="#handleAddFavorite"
+                        styleClass="small-button"/>
+
+                <!-- Remove button: wired to controller and has "destructive" class for CSS -->
+                <Button fx:id="removeFavBtn"
+                        text="Remove"
+                        onAction="#handleRemoveFavorite"
+                        styleClass="small-button destructive"/>
+            </HBox>
+        </VBox>
+    </left>
+
+    <!-- CENTER WEATHER AREA -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent;">
+            <VBox spacing="22" style="-fx-padding: 20;">
+
+                <!-- MAIN CARD -->
+                <VBox fx:id="currentWeatherBox" spacing="22"
+                      styleClass="current-card">
+
+                    <HBox spacing="24" alignment="CENTER_LEFT">
+                        <ImageView fx:id="iconView" fitWidth="140"
+                                   fitHeight="140" preserveRatio="true"
+                                   styleClass="weather-icon"/>
+
+                        <VBox spacing="8">
+                            <Label fx:id="tempLabel" text="--°C"
+                                   styleClass="temp-xlarge"/>
+
+                            <Label fx:id="conditionLabel" text="Condition: --"
+                                   styleClass="muted large-label"/>
+
+                            <HBox spacing="20">
+                                <Label fx:id="feelsLikeLabel" text="Feels like: --" styleClass="muted"/>
+                                <Label fx:id="humidityLabel" text="Humidity: --" styleClass="muted"/>
+                                <Label fx:id="windLabel" text="Wind: --" styleClass="muted"/>
+                            </HBox>
+
+                            <HBox spacing="20">
+                                <Label fx:id="pressureLabel" text="Pressure: --" styleClass="muted"/>
+                                <Label fx:id="visibilityLabel" text="Visibility: --" styleClass="muted"/>
+                                <Label fx:id="uvLabel" text="UV: --" styleClass="muted"/>
+                                <Label fx:id="cloudLabel" text="Clouds: --" styleClass="muted"/>
+                            </HBox>
+
+                            <Label fx:id="lastUpdatedLabel" text="" styleClass="small-muted"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- LOCATION LINE -->
+                    <Label fx:id="locationLabel" text="Location: --" styleClass="muted location-line"/>
+
+                    <!-- SECOND LINE -->
+                    <HBox spacing="24">
+                        <Label fx:id="coordsLabel" text="Lat/Lon: --" styleClass="muted"/>
+                        <Label fx:id="aqiLabel" text="PM2.5: --" styleClass="muted"/>
+                        <Label fx:id="sunriseLabel" text="Sunrise: --" styleClass="muted"/>
+                        <Label fx:id="sunsetLabel" text="Sunset: --" styleClass="muted"/>
+                        <Label fx:id="moonLabel" text="Moon: --" styleClass="muted"/>
+                    </HBox>
+
+                    <!-- OVERVIEW AND ACTIONS -->
+                    <HBox spacing="20">
+                        <VBox spacing="10" style="-fx-pref-width: 540;">
+                            <Label text="Today Overview" styleClass="section-subtitle"/>
+                            <TextArea fx:id="moreDetailsArea" wrapText="true"
+                                      prefRowCount="4" editable="false"
+                                      styleClass="overview-box"/>
+                        </VBox>
+
+                        <VBox spacing="12" alignment="TOP_CENTER">
+                            <Label text="Quick Actions" styleClass="section-subtitle"/>
+                            <Button fx:id="saveSnapshotBtn" text="Save Snapshot"
+                                    onAction="#handleSaveSnapshot"
+                                    styleClass="snapshot-button"/>
+                            <Button fx:id="shareBtn" text="Share"
+                                    onAction="#handleShare"
+                                    styleClass="share-button"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- GRAPHS (SIDE BY SIDE) -->
+                <VBox spacing="12">
+                    <Label text="Temperature Trends" styleClass="section-title"/>
+
+                    <HBox spacing="20" alignment="CENTER">
+
+                        <!-- 7-day chart -->
+                        <LineChart fx:id="tempChart" prefWidth="450" prefHeight="260" createSymbols="true">
+                            <xAxis>
+                                <CategoryAxis fx:id="xAxis" label="Day"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="yAxis" label="°C"/>
+                            </yAxis>
+                        </LineChart>
+
+                        <!-- hourly chart -->
+                        <LineChart fx:id="hourlyChart" prefWidth="450" prefHeight="260" createSymbols="true">
+                            <xAxis>
+                                <CategoryAxis fx:id="hourlyXAxis" label="Hour">
+                                    <tickLabelRotation>45</tickLabelRotation>
+                                </CategoryAxis>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="hourlyYAxis" label="°C"/>
+                            </yAxis>
+                        </LineChart>
+
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+  <!-- RIGHT FORECAST (full-height) -->
+<right>
+    <VBox spacing="12" style="-fx-padding: 18;" prefWidth="420" VBox.vgrow="ALWAYS">
+
+        <!-- Title -->
+        <Label text="7-Day Forecast" styleClass="section-title"/>
+
+        <!-- Full-height scrollable card area -->
+        <ScrollPane fx:id="forecastScroll" fitToWidth="true"
+                    fitToHeight="true"
+                    VBox.vgrow="ALWAYS"
+                    style="-fx-background: transparent; -fx-padding: 0;">
+
+            <!-- Inner vbox expands to fill the scroll area -->
+            <VBox spacing="12" prefWidth="380" style="-fx-padding: 4;" VBox.vgrow="ALWAYS">
+                <FlowPane fx:id="forecastPane"
+                          hgap="12" vgap="12"
+                          prefWrapLength="360"
+                          VBox.vgrow="ALWAYS"
+                          style="-fx-padding: 4;"/>
+            </VBox>
+
+        </ScrollPane>
+
+    </VBox>
+</right>
+
+</BorderPane>

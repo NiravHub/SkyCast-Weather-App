@@ -1,0 +1,9 @@
+SkyCast Snapshot — 2025-11-28 17:13:29
+City: china
+0.1°C
+Condition: Overcast
+Feels like: -0.7°C | Humidity: 55% | Wind: 3.6 km/h
+Pressure: 1012 hPa | Visibility: 10.0 km | UV: 0.0 | Clouds: 0%
+
+Overview:
+sunny

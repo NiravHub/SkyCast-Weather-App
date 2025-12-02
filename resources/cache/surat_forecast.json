@@ -1,0 +1,67 @@
+{
+  "cod": "200",
+  "message": 0,
+  "cnt": 5,
+  "list": [
+    {
+      "dt": 1708400400,
+      "main": {
+        "temp": 31.0,
+        "temp_min": 29.5,
+        "temp_max": 31.0,
+        "humidity": 60
+      },
+      "weather": [
+        { "main": "Clouds", "description": "scattered clouds" }
+      ]
+    },
+    {
+      "dt": 1708486800,
+      "main": {
+        "temp": 30.5,
+        "temp_min": 29.0,
+        "temp_max": 31.2,
+        "humidity": 58
+      },
+      "weather": [
+        { "main": "Rain", "description": "light rain" }
+      ]
+    },
+    {
+      "dt": 1708573200,
+      "main": {
+        "temp": 29.8,
+        "temp_min": 28.5,
+        "temp_max": 30.7,
+        "humidity": 65
+      },
+      "weather": [
+        { "main": "Clouds", "description": "broken clouds" }
+      ]
+    },
+    {
+      "dt": 1708659600,
+      "main": {
+        "temp": 31.0,
+        "temp_min": 29.8,
+        "temp_max": 32.0,
+        "humidity": 62
+      },
+      "weather": [
+        { "main": "Clear", "description": "clear sky" }
+      ]
+    },
+    {
+      "dt": 1708746000,
+      "main": {
+        "temp": 30.2,
+        "temp_min": 29.0,
+        "temp_max": 31.1,
+        "humidity": 59
+      },
+      "weather": [
+        { "main": "Clouds", "description": "few clouds" }
+      ]
+    }
+  ]
+}
